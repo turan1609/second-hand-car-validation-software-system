@@ -1,0 +1,1958 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1388</width>
+    <height>818</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>560</y>
+      <width>471</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayoutButton">
+     <item>
+      <widget class="QPushButton" name="btnShowResults">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-color:  #6affe7;
+	border-width: 5px;
+}
+QPushButton:hover{
+	background-color: #57fff1;
+	color: black;
+}
+QPushButton:pressed{
+	background-color: #0eff93;
+	color: black;
+}</string>
+       </property>
+       <property name="text">
+        <string>SHOW RESULTS</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnClear">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-color:  #6affe7;
+	border-width: 5px;
+}
+QPushButton:hover{
+	background-color: #57fff1;
+	color: black;
+}
+QPushButton:pressed{
+	background-color: #0eff93;
+	color: black;
+}</string>
+       </property>
+       <property name="text">
+        <string>CLEAR</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnShowAllResults">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-color:  #6affe7;
+	border-width: 5px;
+}
+QPushButton:hover{
+	background-color: #57fff1;
+	color: black;
+}
+QPushButton:pressed{
+	background-color: #0eff93;
+	color: black;
+}</string>
+       </property>
+       <property name="text">
+        <string>SHOW ALL RESULTS</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnDownload">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-color:  #6affe7;
+	border-width: 5px;
+}
+QPushButton:hover{
+	background-color: #57fff1;
+	color: black;
+}
+QPushButton:pressed{
+	background-color: #0eff93;
+	color: black;
+}</string>
+       </property>
+       <property name="text">
+        <string>DOWNLOAD</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QFrame" name="frameFilter">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>471</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-style: solid;
+border-width: 5px;
+border-color: #6affe7;
+background-color: #FFFAFA;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <layout class="QVBoxLayout" name="verticalLayoutFilter">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="styleSheet">
+            <string notr="true">color: black;
+border-color: black;
+background-color: #20B2AA;</string>
+           </property>
+           <property name="text">
+            <string>Brand:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="cmbBrand">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QComboBox{
+	border-color:black;
+	color: black;
+	background-color: #008080;
+}
+QComboBox:hover{
+	background-color: #57fff1;
+}</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="styleSheet">
+            <string notr="true">color: black;
+border-color: black;
+background-color: #20B2AA;</string>
+           </property>
+           <property name="text">
+            <string>Model:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="cmbModel">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QComboBox{
+	border-color:black;
+	color: black;
+	background-color: #008080;
+}
+QComboBox:hover{
+	background-color: #57fff1;
+}</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="styleSheet">
+            <string notr="true">color: black;
+border-color: black;
+background-color: #20B2AA;</string>
+           </property>
+           <property name="text">
+            <string>Engine Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="cmbEngineType">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QComboBox{
+	border-color:black;
+	color: black;
+	background-color: #008080;
+}
+QComboBox:hover{
+	background-color: #57fff1;
+}</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="styleSheet">
+            <string notr="true">color: black;
+border-color: black;
+background-color: #20B2AA;</string>
+           </property>
+           <property name="text">
+            <string>Year:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="spbYear">
+           <property name="styleSheet">
+            <string notr="true">QSpinBox{
+	border-color:black;
+	color: black;
+	background-color: #008080;
+}
+QSpinBox:hover{
+	background-color: #57fff1;
+}</string>
+           </property>
+           <property name="minimum">
+            <number>2010</number>
+           </property>
+           <property name="maximum">
+            <number>2024</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="label_10">
+           <property name="styleSheet">
+            <string notr="true">color: black;
+border-color: black;
+background-color: #20B2AA;</string>
+           </property>
+           <property name="text">
+            <string>Km:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="styleSheet">
+            <string notr="true">color: black;
+border-color: black;
+background-color: #20B2AA;</string>
+           </property>
+           <property name="text">
+            <string>Min:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lneMax_2">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit{
+	border-color:black;
+	color: black;
+	background-color: #008080;
+}
+QLineEdit:hover{
+	background-color: #57fff1;
+}</string>
+           </property>
+           <property name="inputMask">
+            <string>999999999999</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_11">
+           <property name="styleSheet">
+            <string notr="true">color: black;
+border-color: black;
+background-color: #20B2AA;</string>
+           </property>
+           <property name="text">
+            <string>Max:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lneMax">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit{
+	border-color:black;
+	color: black;
+	background-color: #008080;
+}
+QLineEdit:hover{
+	background-color: #57fff1;
+}</string>
+           </property>
+           <property name="inputMask">
+            <string>999999999999</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <widget class="QLabel" name="label_6">
+           <property name="styleSheet">
+            <string notr="true">color: black;
+border-color: black;
+background-color: #20B2AA;</string>
+           </property>
+           <property name="text">
+            <string>Fuel Type</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="cmbFuelType">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QComboBox{
+	border-color:black;
+	color: black;
+	background-color: #008080;
+}
+QComboBox:hover{
+	background-color: #57fff1;
+}</string>
+           </property>
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ADANA </string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ADIYAMAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AFYON</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AĞRI</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AMASYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ANKARA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ANTALYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ARTVİN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AYDIN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BALIKESİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BİLECİK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BİNGÖL</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BİTLİS</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BOLU</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BURDUR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BURSA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ÇANAKKALE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ÇANKIRI</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ÇORUM</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DENİZLİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DİYARBAKIR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EDİRNE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ELAZIĞ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ERZİNCAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ERZURUM</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ESKİŞEHİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>GAZİANTEP</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>GİRESUN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>GÜMÜŞHANE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>HAKKARİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>HATAY</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ISPARTA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MERSİN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>İSTANBUL</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>İZMİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KARS</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KASTAMONU</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KAYSERİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KIRKLARELİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KIRŞEHİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KOCAELİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KONYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KÜTAHYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MALATYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MANİSA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KAHRAMANMARAŞ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MARDİN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MUĞLA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MUŞ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>NEVŞEHİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>NİĞDE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ORDU</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>RİZE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SAKARYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SAMSUN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SİİRT</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SİNOP</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SİVAS</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>TEKİRDAĞ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>TOKAT</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>TRABZON</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>TUNCELİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ŞANLIURFA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>UŞAK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ZONGULDAK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AKSARAY</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BAYBURT</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KARAMAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KIRIKKALE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BATMAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ŞIRNAK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BARTIN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ARDAHAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>IĞDIR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>YALOVA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KARABÜK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KİLİS</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>OSMANİYE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DÜZCE</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLabel" name="label_7">
+           <property name="styleSheet">
+            <string notr="true">color: black;
+border-color: black;
+background-color: #20B2AA;</string>
+           </property>
+           <property name="text">
+            <string>Gear Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="cmbGearType">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QComboBox{
+	border-color:black;
+	color: black;
+	background-color: #008080;
+}
+QComboBox:hover{
+	background-color: #57fff1;
+}</string>
+           </property>
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ADANA </string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ADIYAMAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AFYON</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AĞRI</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AMASYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ANKARA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ANTALYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ARTVİN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AYDIN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BALIKESİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BİLECİK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BİNGÖL</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BİTLİS</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BOLU</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BURDUR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BURSA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ÇANAKKALE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ÇANKIRI</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ÇORUM</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DENİZLİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DİYARBAKIR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EDİRNE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ELAZIĞ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ERZİNCAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ERZURUM</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ESKİŞEHİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>GAZİANTEP</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>GİRESUN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>GÜMÜŞHANE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>HAKKARİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>HATAY</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ISPARTA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MERSİN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>İSTANBUL</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>İZMİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KARS</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KASTAMONU</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KAYSERİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KIRKLARELİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KIRŞEHİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KOCAELİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KONYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KÜTAHYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MALATYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MANİSA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KAHRAMANMARAŞ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MARDİN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MUĞLA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MUŞ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>NEVŞEHİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>NİĞDE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ORDU</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>RİZE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SAKARYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SAMSUN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SİİRT</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SİNOP</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SİVAS</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>TEKİRDAĞ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>TOKAT</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>TRABZON</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>TUNCELİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ŞANLIURFA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>UŞAK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ZONGULDAK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AKSARAY</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BAYBURT</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KARAMAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KIRIKKALE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BATMAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ŞIRNAK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BARTIN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ARDAHAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>IĞDIR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>YALOVA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KARABÜK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KİLİS</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>OSMANİYE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DÜZCE</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <item>
+          <widget class="QLabel" name="label_12">
+           <property name="styleSheet">
+            <string notr="true">color: black;
+border-color: black;
+background-color: #20B2AA;</string>
+           </property>
+           <property name="text">
+            <string>Warranty Status:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="cmbWarranty">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QComboBox{
+	border-color:black;
+	color: black;
+	background-color: #008080;
+}
+QComboBox:hover{
+	background-color: #57fff1;
+}</string>
+           </property>
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ADANA </string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ADIYAMAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AFYON</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AĞRI</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AMASYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ANKARA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ANTALYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ARTVİN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AYDIN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BALIKESİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BİLECİK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BİNGÖL</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BİTLİS</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BOLU</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BURDUR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BURSA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ÇANAKKALE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ÇANKIRI</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ÇORUM</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DENİZLİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DİYARBAKIR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EDİRNE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ELAZIĞ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ERZİNCAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ERZURUM</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ESKİŞEHİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>GAZİANTEP</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>GİRESUN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>GÜMÜŞHANE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>HAKKARİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>HATAY</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ISPARTA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MERSİN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>İSTANBUL</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>İZMİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KARS</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KASTAMONU</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KAYSERİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KIRKLARELİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KIRŞEHİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KOCAELİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KONYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KÜTAHYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MALATYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MANİSA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KAHRAMANMARAŞ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MARDİN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MUĞLA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MUŞ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>NEVŞEHİR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>NİĞDE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ORDU</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>RİZE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SAKARYA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SAMSUN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SİİRT</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SİNOP</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SİVAS</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>TEKİRDAĞ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>TOKAT</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>TRABZON</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>TUNCELİ</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ŞANLIURFA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>UŞAK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ZONGULDAK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AKSARAY</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BAYBURT</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KARAMAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KIRIKKALE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BATMAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ŞIRNAK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>BARTIN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ARDAHAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>IĞDIR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>YALOVA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KARABÜK</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>KİLİS</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>OSMANİYE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DÜZCE</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="styleSheet">
+            <string notr="true">color: black;
+border-color: black;
+background-color: #20B2AA;</string>
+           </property>
+           <property name="text">
+            <string>Price:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_13">
+           <property name="styleSheet">
+            <string notr="true">color: black;
+border-color: black;
+background-color: #20B2AA;</string>
+           </property>
+           <property name="text">
+            <string>Min:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lneMin_2">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit{
+	border-color:black;
+	color: black;
+	background-color: #008080;
+}
+QLineEdit:hover{
+	background-color: #57fff1;
+}</string>
+           </property>
+           <property name="inputMask">
+            <string>999999999999</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="styleSheet">
+            <string notr="true">color: black;
+border-color: black;
+background-color: #20B2AA;</string>
+           </property>
+           <property name="text">
+            <string>Max:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lneMin">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit{
+	border-color:black;
+	color: black;
+	background-color: #008080;
+}
+QLineEdit:hover{
+	background-color: #57fff1;
+}</string>
+           </property>
+           <property name="inputMask">
+            <string>999999999999</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>10</y>
+      <width>831</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-style: solid;
+border-width: 3px;
+border-color: #6affe7;
+background-color: #FFFAFA;</string>
+    </property>
+    <property name="rowCount">
+     <number>99</number>
+    </property>
+    <property name="columnCount">
+     <number>9</number>
+    </property>
+    <row>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>3</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>4</string>
+     </property>
+    </row>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <column>
+     <property name="text">
+      <string>BRAND</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>MODEL</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>ENGİNE TYPE</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>YEAR</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>KM</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>FUEL TYPE</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>GEAR TYPE</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>PRİCE</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string/>
+     </property>
+    </column>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1388</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
