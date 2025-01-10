@@ -1,10 +1,133 @@
-import csv
 import sqlite3
 import sys
-import pandas as pd
 from PyQt5.QtWidgets import *
 from SecondHandCar import *
+import glob
+import pandas as pd
+import data as data
+from PyQt5.QtCore import QObject, pyqtSignal, QThread
 from PyQt5.QtWidgets import QFileDialog
+
+
+class StreamRedirector(QObject):
+    new_text = pyqtSignal(str)
+
+    def write(self, text):
+        self.new_text.emit(text)
+
+    
+def redirect_output():
+    global output_stream
+    output_stream = StreamRedirector()
+    output_stream.new_text.connect(ui.QPlanText_Terminal.appendPlainText)  
+    sys.stdout = output_stream
+    sys.stderr = output_stream
+
+class DataLoaderThread(QThread):
+    data_loaded = pyqtSignal()  
+
+    def run(self):
+        
+        self.load_data()
+        
+        
+
+    
+    def load_data(self):
+        try:
+            baglanti = sqlite3.connect("SecondHandCar.db")
+            islem = baglanti.cursor()
+
+
+            with baglanti as conn:
+                conn.execute("DELETE FROM Cars;")
+            baglanti.commit()
+
+            
+            islem.execute("""
+                CREATE TABLE IF NOT EXISTS Cars (
+                id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                brand TEXT NOT NULL,
+                model TEXT NOT NULL,
+                engineType TEXT NOT NULL,
+                year TEXT NOT NULL,
+                km INTEGER NOT NULL,
+                fuelType TEXT NOT NULL,
+                gearType TEXT NOT NULL,
+                warrantyStatus TEXT NOT NULL,
+                price INTEGER NOT NULL
+            )
+            """)
+
+            
+            csv_file="araba_verileri.csv"
+            print(f"İşleniyor: {csv_file}")
+            df = pd.read_csv(csv_file)  
+            df = df[['brand', 'model', 'engineType', 'year', 'km', 'fuelType', 'gearType', 'warrantyStatus', 'price']]
+            df.to_sql('Cars', baglanti, if_exists='append', index=False) 
+
+            
+            self.data_loaded.emit()
+
+        except Exception as e:
+            print(f"Veri yükleme sırasında hata: {e}")
+        finally:
+            
+            self.quit()
+
+
+class PullDataThread(QThread):
+    data_pulled = pyqtSignal()
+
+    def run(self):
+        self.pull_data()
+
+    def pull_data(self):
+        page_from()
+        page_to()
+        
+        
+        try:
+        
+    
+            data.veri_cek(page_from(),page_to())
+            self.load_data()
+        except Exception as e:
+            print(f"Veri çekme sırasında hata: {e}")
+
+    def load_data(self):
+        try:
+            baglanti = sqlite3.connect("SecondHandCar.db")
+            islem = baglanti.cursor()
+
+            with baglanti as conn:
+                conn.execute("DELETE FROM Cars;")
+            baglanti.commit()
+
+            islem.execute("""
+                CREATE TABLE IF NOT EXISTS Cars (
+                id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                brand TEXT NOT NULL,
+                model TEXT NOT NULL,
+                engineType TEXT NOT NULL,
+                year TEXT NOT NULL,
+                km INTEGER NOT NULL,
+                fuelType TEXT NOT NULL,
+                gearType TEXT NOT NULL,
+                warrantyStatus TEXT NOT NULL,
+                price INTEGER NOT NULL
+            )
+            """)
+
+            csv_file = "updated_araba_verileri.csv"
+            print(f"İşleniyor: {csv_file}")
+            df = pd.read_csv(csv_file)  
+            df = df[['brand', 'model', 'engineType', 'year', 'km', 'fuelType', 'gearType', 'warrantyStatus', 'price']]
+            df.to_sql('Cars', baglanti, if_exists='append', index=False) 
+
+            self.data_pulled.emit()
+        except Exception as e:
+            print(f"Veri yükleme sırasında hata: {e}")
 
 
 uygulama = QApplication(sys.argv)
@@ -13,222 +136,163 @@ ui = Ui_MainWindow()
 ui.setupUi(pencere)
 pencere.show()
 
-# Veritabanı bağlantısı
-baglanti = sqlite3.connect('SecondHandCar.db')
+
+
+pull_data_thread = PullDataThread()
+
+
+def datapull():
+    pull_data_thread.start()
+    pull_data_thread.data_pulled.connect(load_data_to_ui)
+
+ui.btnPullData.clicked.connect(datapull)
+
+def load_data():
+        try:
+            baglanti = sqlite3.connect("SecondHandCar.db")
+            islem = baglanti.cursor()
+
+
+            with baglanti as conn:
+                conn.execute("DELETE FROM Cars;")
+            baglanti.commit()
+
+            
+            islem.execute("""
+                CREATE TABLE IF NOT EXISTS Cars (
+                id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                brand TEXT NOT NULL,
+                model TEXT NOT NULL,
+                engineType TEXT NOT NULL,
+                year TEXT NOT NULL,
+                km INTEGER NOT NULL,
+                fuelType TEXT NOT NULL,
+                gearType TEXT NOT NULL,
+                warrantyStatus TEXT NOT NULL,
+                price INTEGER NOT NULL
+            )
+            """)
+
+            
+            csv_file= "updated_araba_verileri.csv"
+            
+            print(f"İşleniyor: {csv_file}")
+            df = pd.read_csv(csv_file)  
+            df = df[['brand', 'model', 'engineType', 'year', 'km', 'fuelType', 'gearType', 'warrantyStatus', 'price']]
+            df.to_sql('Cars', baglanti, if_exists='append', index=False) 
+
+            
+        except Exception as e:
+            print(f"Veri yükleme sırasında hata: {e}")
+
+
+
+
+
+
+
+baglanti = sqlite3.connect("SecondHandCar.db")
 islem = baglanti.cursor()
-
-# Veritabanı tablosunu oluştur (eğer yoksa)
-islem.execute('''
-    CREATE TABLE IF NOT EXISTS Cars (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        brand TEXT NOT NULL,
-        model TEXT NOT NULL,
-        engineType TEXT NOT NULL,
-        year TEXT NOT NULL,
-        km INTEGER NOT NULL,
-        fuelType TEXT NOT NULL,
-        gearType TEXT NOT NULL,
-        warrantyStatus TEXT NOT NULL,
-        price INTEGER NOT NULL
-    )
-''')
-baglanti.commit()
-
-# Veritabanı bağlantısı
-conn = sqlite3.connect('SecondHandCar.db')
-cursor = conn.cursor()
-
-
-
-# Veritabanındaki mevcut verileri kontrol et
-def reset_id_and_import_data(file_path):
-    try:
-        # Eski verileri temizle (isteğe bağlı)
-        cursor.execute('DELETE FROM Cars')
-        conn.commit()
-
-        # `sqlite_sequence` tablosunu sıfırlayarak id'yi 1'den başlat
-        cursor.execute('UPDATE sqlite_sequence SET seq = 0 WHERE name = "Cars"')
-        conn.commit()
-
-        # CSV dosyasındaki verileri veritabanına ekle
-        with open(file_path, 'r', encoding='utf-8') as file:
-            reader = csv.reader(file)
-            next(reader)  # Başlık satırını geç
-
-            # CSV dosyasındaki verileri satır satır kontrol et
-            print("CSV Dosyasındaki Veriler:")
-            for row in reader:
-                print(row)  # CSV satırlarını yazdırarak kontrol edin
-
-                # Satırın uzunluğunun beklenen 9 sütuna sahip olup olmadığını kontrol et
-                if len(row) == 9:
-                    try:
-                        # Araç verilerinin veritabanında mevcut olup olmadığını kontrol et
-                        cursor.execute('''
-                            SELECT COUNT(*) FROM Cars WHERE brand = ? AND model = ? AND engineType = ? AND year = ? AND km = ? AND fuelType = ? AND gearType = ? AND warrantyStatus = ? AND price = ?
-                        ''', tuple(row))
-                        count = cursor.fetchone()[0]
-
-                        # Eğer araç zaten varsa, eklemeyi atla
-                        if count == 0:
-                            # Veritabanına ekleme işlemi
-                            cursor.execute('''
-                            INSERT INTO Cars (brand, model, engineType, year, km, fuelType, gearType, warrantyStatus, price)
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-                            ''', tuple(row))
-                        else:
-                            print(f"Araç zaten veritabanında mevcut: {row}")
-
-                    except sqlite3.Error as e:
-                        print(f"Veritabanı hatası (satır eklenirken): {e}")
-                        continue  # Eğer bir hata varsa bu satırı atla ve diğerlerini işlemeye devam et
-                else:
-                    print(f"Uyarı: Geçersiz satır uzunluğu (satırda 9 sütun bekleniyor): {row}")
-
-        # Veritabanına işlemi kaydet
-        conn.commit()
-        print("Veriler başarıyla veritabanına aktarıldı.")
-
-        # Veritabanındaki tüm verileri yazdırarak kontrol et
-        cursor.execute('SELECT * FROM Cars')
-        rows = cursor.fetchall()
-        print("Veritabanındaki tüm veriler:")
-        for row in rows:
-            print(row)
-
-    except FileNotFoundError:
-        print("CSV dosyası bulunamadı. Lütfen dosya yolunun doğru olduğundan emin olun.")
-    except sqlite3.Error as e:
-        print(f"Veritabanı hatası: {e}")
-    except Exception as e:
-        print(f"Hata: {e}")
-    finally:
-        conn.close()  # Bağlantıyı her durumda kapat
-
-
-# CSV dosyasını veritabanına aktarma
-reset_id_and_import_data('arabalar_motor_hacmi.csv')  # Veriyi veritabanına ekleme
-
 
 
 
 
 
 def get_all_brands():
+    ui.cmbBrand.addItem("All")
     islem.execute("SELECT DISTINCT brand FROM Cars")
-    brands = [row[0] for row in islem.fetchall()]
-    return ["All"] + brands  # "All" seçeneğini en başa ekle
+    return [row[0] for row in islem.fetchall()]
 
 def get_all_models():
+    ui.cmbModel.addItem("All")
     islem.execute("SELECT DISTINCT model FROM Cars")
-    models = [row[0] for row in islem.fetchall()]
-    return ["All"] + models  # "All" seçeneğini en başa ekle
+    return [row[0] for row in islem.fetchall()]
 
 def get_all_engineTypes():
+    ui.cmbEngineType.addItem("All")
     islem.execute("SELECT DISTINCT engineType FROM Cars")
-    engine_types = [row[0] for row in islem.fetchall()]
-    return ["All"] + engine_types  # "All" seçeneğini en başa ekle
+    return [row[0] for row in islem.fetchall()]
 
 def get_all_years():
-    # Yılları veritabanından küçükten büyüğe sıralı şekilde çek
-    islem.execute("SELECT DISTINCT year FROM Cars ORDER BY year ASC")
-    years = [row[0] for row in islem.fetchall()]
-    print(f"Year: {years}")  # Veritabanından çekilen yılları yazdır
-    return ["All"] + years  # "All" seçeneğini en başa ekle
+    ui.cmbYear.addItem("All")
+    islem.execute("SELECT DISTINCT year FROM Cars")
+    return  [row[0] for row in islem.fetchall()]
 
 def get_all_fuel_types():
+    ui.cmbFuelType.addItem("All")
     islem.execute("SELECT DISTINCT fuelType FROM Cars")
-    fuel_types = [row[0] for row in islem.fetchall()]
-    print(f"Fuel Types: {fuel_types}")  # Veritabanından çekilen yakıt türlerini yazdır
-    return ["All"] + fuel_types  # "All" seçeneğini en başa ekle
+    return [row[0] for row in islem.fetchall()]
 
 def get_all_gear_types():
+    ui.cmbGearType.addItem("All")
     islem.execute("SELECT DISTINCT gearType FROM Cars")
-    gear_types = [row[0] for row in islem.fetchall()]
-    print(f"Gear Types: {gear_types}")  # Veritabanından çekilen vites türlerini yazdır
-    return ["All"] + gear_types  # "All" seçeneğini en başa ekle
+    return [row[0] for row in islem.fetchall()]
 
 def get_all_warranty_statuses():
+    ui.cmbWarranty.addItem("All")
     islem.execute("SELECT DISTINCT warrantyStatus FROM Cars")
-    warranty_statuses = [row[0] for row in islem.fetchall()]
-    print(f"Warranty Statuses: {warranty_statuses}")  # Veritabanından çekilen garanti durumlarını yazdır
-    return ["All"] + warranty_statuses  # "All" seçeneğini en başa ekle
-
-
-
-
+    return [row[0] for row in islem.fetchall()]
 
 
 
 
 def load_data_to_ui():
-    # Brand ComboBox
+    ui.tableWidget.setRowCount(0)
+    ui.statusbar.showMessage("Tablo tercihleri temizlendi.", 3000)
+    ui.cmbBrand.clear()
+    ui.cmbYear.clear()
+    ui.cmbModel.clear()
+    ui.cmbEngineType.clear()
+    ui.cmbFuelType.clear()
+    ui.cmbGearType.clear()
+    ui.cmbWarranty.clear()
+    ui.PullDataYearFrom.clear()
+    ui.PullDataYearTo.clear()
     ui.cmbBrand.addItems(get_all_brands())
-    # Model ComboBox
+    ui.cmbYear.addItems(get_all_years())
     ui.cmbModel.addItems(get_all_models())
     ui.cmbEngineType.addItems(get_all_engineTypes())
-    ui.cmbYear.addItems(get_all_years())
-
-    # Fuel Type ComboBox
-    fuel_types = get_all_fuel_types()
-    if fuel_types:
-        ui.cmbFuelType.addItems(fuel_types)
-    else:
-        print("No fuel types found in the database.")
-
-    # Gear Type ComboBox
-    gear_types = get_all_gear_types()
-    if gear_types:
-        ui.cmbGearType.addItems(gear_types)
-    else:
-        print("No gear types found in the database.")
-
-    # Warranty Status ComboBox
-    warranty_statuses = get_all_warranty_statuses()
-    if warranty_statuses:
-        ui.cmbWarranty.addItems(warranty_statuses)
-    else:
-        print("No warranty statuses found in the database.")
-
-        # Year ComboBox (Yılları veritabanından alıp ekliyoruz)
-    years = get_all_years()
-    if years:
-        ui.cmbYear.clear()  # ComboBox içeriğini temizle
-        ui.cmbYear.addItems([str(year) for year in years])  # Yılları ComboBox'a ekle
-        ui.cmbYear.setCurrentIndex(0)  # Varsayılan olarak ilk yılı seç
-    else:
-        print("No years found in the database.")
-
-# UI'yi yükle
-load_data_to_ui()
-
-# Veritabanı bağlantısını kapatma
+    ui.cmbFuelType.addItems(get_all_fuel_types())
+    ui.cmbGearType.addItems(get_all_gear_types())
+    ui.cmbWarranty.addItems(get_all_warranty_statuses())
+    print("Database'ten gelen veri Combobox'lara aktarıldı.")
+    
 
 
-def clear_widgets():
-    layout = ui.scrollAreaWidgetContents_2.layout()
 
-    if layout is not None:
-        # Layout içerisindeki tüm widget'ları sil
-        for i in reversed(range(layout.count())):
-            widget_to_remove = layout.itemAt(i).widget()
-            if widget_to_remove is not None:
-                widget_to_remove.deleteLater()
-        print("Tüm widget'lar silindi.")
 
+
+
+
+filters_dict = {}
+
+def save_filters():
+    global filters_dict
+    filters_dict = {
+        "brand": ui.cmbBrand.currentText(),
+        "model": ui.cmbModel.currentText(),
+        "price_min": ui.lneMin_2.text().strip(),
+        "price_max": ui.lneMin.text().strip(),
+        "km_min": ui.lneMax_2.text().strip(),
+        "km_max": ui.lneMax.text().strip(),
+        "engine_type": ui.cmbEngineType.currentText(),
+        "fuel_type": ui.cmbFuelType.currentText(),
+        "gear_type": ui.cmbGearType.currentText(),
+        "warranty": ui.cmbWarranty.currentText(),
+        "year": ui.cmbYear.currentText(),
+    }
 
 def show_results():
-    clear()
+    save_filters() 
     try:
        
-
-        # Veritabanından kayıtları çekiyoruz
+        
+        
         query = "SELECT DISTINCT * FROM cars WHERE 1=1"
         filters = []
 
         
-        # Marka filtresi
+        
         brand = ui.cmbBrand.currentText()
         if brand != "All":
             query += " AND brand = ?"
@@ -243,15 +307,15 @@ def show_results():
         price_max = ui.lneMin.text().strip()
         if price_min and price_max:
             query += " AND  CAST(price AS INTEGER) BETWEEN ? AND ?"
-            filters.append(price_min)
-            filters.append(price_max)
+            filters.append(int(price_min))
+            filters.append(int(price_max))
 
         km_min = ui.lneMax_2.text().strip()
         km_max = ui.lneMax.text().strip()
         if km_min and km_max:
-            query += " AND  CAST(km AS INTEGER) BETWEEN ? AND ?"
-            filters.append(km_min)
-            filters.append(km_max)    
+            query += " AND CAST(km AS INTEGER) BETWEEN ? AND ?"
+            filters.append(int(km_min))  
+            filters.append(int(km_max))   
         
         
         EngineType = ui.cmbEngineType.currentText()
@@ -280,6 +344,8 @@ def show_results():
             query += " AND year= ?"
             filters.append(year)
 
+        print(query)
+        print(filters)
 
        
         islem.execute(query, tuple(filters))
@@ -298,26 +364,50 @@ def show_results():
             for indexSatir, kayitNumarasi in enumerate(kayitlar):
                 for indexSutun, kayitSutun in enumerate(kayitNumarasi): 
                     ui.tableWidget.setItem(indexSatir, indexSutun, QTableWidgetItem(str(kayitSutun)))
+            
     except sqlite3.Error as e:
         print(f"Veritabanı hatası: {e}")
     except Exception as e:
         print(f"Genel hata: {e}")
+    reset_comboboxes()
 
+def reset_comboboxes():
+    try:
+        
+        ui.cmbBrand.setCurrentText("All")
+        ui.cmbModel.setCurrentText("All")
+        ui.cmbEngineType.setCurrentText("All")
+        ui.cmbYear.setCurrentText("All")
+        ui.cmbFuelType.setCurrentText("All")
+        ui.cmbGearType.setCurrentText("All")
+        ui.cmbWarranty.setCurrentText("All")
+        
+
+        
+        ui.statusbar.showMessage("Tüm filtreler sıfırlandı.", 3000)
+    except Exception as e:
+        print(f"ComboBox sıfırlama sırasında hata oluştu: {e}")
 
 def show_all_results():
-    try:
-        ui.tableWidget.setRowCount(0) 
-       
-        sorgu = "SELECT * FROM cars"
-        islem.execute(sorgu)
-        kayitlar = islem.fetchall()
 
+    
+    try:
+        
+        query = "SELECT DISTINCT * FROM cars WHERE 1=1"
+        filters = []
+
+        
+  
+        islem.execute(query)
+        kayitlar = islem.fetchall()
+        print(query)
+        print(filters)
         if kayitlar:
            
             ui.tableWidget.setColumnCount(len(kayitlar[0]))
             ui.tableWidget.setHorizontalHeaderLabels([
-                "ID", "Brand","Model", "Engine Type", "Year", "Km",
-                "Fuel Type", "Gear Type", "Warranty Status","Price"
+                "id", "brand","model", "engineType", "year", "km",
+                "fuelType", "gearType", "warrantyStatus","price"
             ])
 
             
@@ -325,82 +415,132 @@ def show_all_results():
             for indexSatir, kayitNumarasi in enumerate(kayitlar):
                 for indexSutun, kayitSutun in enumerate(kayitNumarasi):
                     ui.tableWidget.setItem(indexSatir, indexSutun, QTableWidgetItem(str(kayitSutun)))
+            
     except sqlite3.Error as e:
         print(f"Veritabanı hatası: {e}")
     except Exception as e:
         print(f"Genel hata: {e}")
+    reset_comboboxes()
 
+def page_to():
+        page_for_range_to= ui.PullDataYearTo.text().strip()
+        if page_for_range_to=="":
+           page_for_range_to = 80
+        return  page_for_range_to
+    
 
-# Tabloyu Temizleme Fonksiyonu
+def page_from():
+        page_for_range_from = ui.PullDataYearFrom.text().strip()
+        if page_for_range_from=="":
+           page_for_range_from= 1
+        return  page_for_range_from
+
 def clear():
     try:
+        ui.cmbBrand.setCurrentText("All")
+        ui.cmbModel.setCurrentText("All")
+        ui.cmbEngineType.setCurrentText("All")
+        ui.cmbYear.setCurrentText("All")
+        ui.cmbFuelType.setCurrentText("All")
+        ui.cmbGearType.setCurrentText("All") 
+        ui.cmbWarranty.setCurrentText("All")
         ui.tableWidget.setRowCount(0)
-        ui.cmbEngineType.setCurrentIndex()
-        ui.cmbModel.setCurrentIndex("All")
-        ui.cmbBrand.setCurrentIndex("All")
-        ui.cmbFuelType.setCurrentIndex("All")
-        ui.cmbGearType.setCurrentIndex("All")
-        ui.cmbWarranty.setCurrentIndex("All")
-        ui.lneMin.clear()
-        ui.lneMax.clear()
-        ui.statusbar.showMessage("Tablo ve filtreleme tercihleri temizlendi.", 3000)
+        ui.statusbar.showMessage("Tablo tercihleri temizlendi.", 3000)
     except Exception as e:
         print(f"Temizleme sırasında hata oluştu: {str(e)}")
 
-
-
-def download_as_csv():
+def download_data(): 
     try:
-        # Tablodaki tüm satırları ve hücreleri almak
-        row_count = ui.tableWidget.rowCount()  # Tablo widget'ındaki satır sayısı
-        col_count = ui.tableWidget.columnCount()  # Tablo widget'ındaki sütun sayısı
+        global filters_dict
+        query = "SELECT DISTINCT * FROM cars WHERE 1=1"
+        filters = []
 
-        if row_count > 0:
-            # Tabloyu veri çerçevesine (DataFrame) dönüştürme
-            data = []
-            for row in range(row_count):
-                row_data = []
-                for col in range(col_count):
-                    item = ui.tableWidget.item(row, col)  # Tablo hücresine erişim
-                    row_data.append(item.text() if item else '')  # Hücre boşsa, boş bir string ekle
-                data.append(row_data)
+        
+        if filters_dict.get("brand") and filters_dict["brand"] != "All":
+            query += " AND brand = ?"
+            filters.append(filters_dict["brand"])
 
-            # DataFrame oluşturma
-            df = pd.DataFrame(data, columns=[
+        if filters_dict.get("model") and filters_dict["model"] != "All":
+            query += " AND model = ?"
+            filters.append(filters_dict["model"])
+
+        if filters_dict.get("price_min") and filters_dict.get("price_max"):
+            query += " AND CAST(price AS INTEGER) BETWEEN ? AND ?"
+            filters.append(int(filters_dict["price_min"]))
+            filters.append(int(filters_dict["price_max"]))
+
+        if filters_dict.get("km_min") and filters_dict.get("km_max"):
+            query += " AND CAST(km AS INTEGER) BETWEEN ? AND ?"
+            filters.append(int(filters_dict["km_min"]))
+            filters.append(int(filters_dict["km_max"]))
+
+        if filters_dict.get("engine_type") and filters_dict["engine_type"] != "All":
+            query += " AND EngineType = ?"
+            filters.append(filters_dict["engine_type"])
+
+        if filters_dict.get("fuel_type") and filters_dict["fuel_type"] != "All":
+            query += " AND FuelType = ?"
+            filters.append(filters_dict["fuel_type"])
+
+        if filters_dict.get("gear_type") and filters_dict["gear_type"] != "All":
+            query += " AND GearType = ?"
+            filters.append(filters_dict["gear_type"])
+
+        if filters_dict.get("warranty") and filters_dict["warranty"] != "All":
+            query += " AND WarrantyStatus = ?"
+            filters.append(filters_dict["warranty"])
+
+        if filters_dict.get("year") and filters_dict["year"] != "All":
+            query += " AND year = ?"
+            filters.append(filters_dict["year"])
+
+        
+        islem.execute(query, tuple(filters))
+        kayitlar = islem.fetchall()
+
+        if kayitlar:
+           
+            df = pd.DataFrame(kayitlar, columns=[
                 "ID", "Brand", "Model", "Engine Type", "Year",
                 "Km", "Fuel Type", "Gear Type", "Warranty Status", "Price"
             ])
 
-            print("Tablodaki görünen veriler (ilk 5 satır):")
-            print(df.head())
+            
+            file_path, _ = QFileDialog.getSaveFileName(
+                pencere, "Verileri Kaydet", "", "Excel Dosyası (*.csv)"
+            )
 
-            # Dosya kaydetmek için dosya yolunu sorma
-            options = QFileDialog.Options()
-            file_path, _ = QFileDialog.getSaveFileName(None, "CSV Dosyasını Kaydet", "", "CSV Files (*.csv);;All Files (*)", options=options)
+            if file_path:  
+               
+                df.to_csv(file_path, index=False)
 
-            if file_path:
-                # Verileri düzgün şekilde CSV dosyasına kaydetme
-                df.to_csv(file_path, index=False, sep=';', encoding='utf-8')  # Noktalı virgül ayraç olarak kullanılabilir
-
-                ui.statusbar.showMessage(f"Veriler başarıyla '{file_path}' dosyasına kaydedildi.", 5000)
+                
+                print(f"Veriler başarıyla '{file_path}' dosyasına kaydedildi.", 5000)
             else:
-                ui.statusbar.showMessage("Dosya kaydedilmedi.", 5000)
+                
+                print("Dosya kaydedilmedi.", 5000)
         else:
-            ui.statusbar.showMessage("Tabloda görünen veri yok.", 5000)
+           
+            print("Kaydedilecek veri bulunamadı.", 5000)
 
+    except sqlite3.Error as e:
+        
+        print(f"Veritabanı hatası: {e}", 5000)
     except Exception as e:
-        ui.statusbar.showMessage(f"Hata: {e}", 5000)
+        
+        print(f"Hata: {e}", 5000)
 
 
-# Buton bağlantıları
 ui.btnShowAllResults.clicked.connect(show_all_results)
-ui.btnShowResults.clicked.connect(show_results)  # Show Results butonunu show_results fonksiyonuna bağladık
+ui.btnShowResults.clicked.connect(show_results)  
 ui.btnClear.clicked.connect(clear)
-ui.btnDownload.clicked.connect(download_as_csv)  # Download butonuna bağladık
+ui.btnDownload.clicked.connect(download_data)  
+
+loader_thread = DataLoaderThread()
+loader_thread.data_loaded.connect(load_data_to_ui) 
+loader_thread.finished.connect(lambda: print("Veri yükleme tamamlandı."))
+loader_thread.start()
+
+redirect_output()
 
 sys.exit(uygulama.exec_())
-
-
-
-
-

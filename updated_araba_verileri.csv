@@ -1,0 +1,121 @@
+brand,model,engineType,year,km,fuelType,gearType,warrantyStatus,price
+Volkswagen, Tiguan,1.5 Etsi Act 150 Ps R-line Dsg,2024,7932, Hibrit, Tiptronic, DS Garantisi,2690000
+Volkswagen, Passat,1.5 Etsi 150 Ps Elegance Dsg (n),2024,6250, Hibrit, Tiptronic, DS Garantisi,2650000
+Volkswagen, Passat,1.5 Etsi 150 Ps Elegance Dsg (n),2024,7975, Hibrit, Tiptronic, DS Garantisi,2592900
+Volkswagen, Passat,1.5 Etsi 150 Ps R-line Dsg,2024,17600, Hibrit, Tiptronic, DS Garantisi,2580000
+Volkswagen, Passat,1.5 Etsi 150 Ps Elegance Dsg (n),2024,25511, Hibrit, Tiptronic, DS Garantisi,2549750
+Volkswagen, Caravelle,Comfortline 2.0 Tdi 8+1 Uzun 150 Ps Dsg,2024,6530, Dizel, Tiptronic, DS Garantisi,2500000
+Volkswagen, Tiguan,1.5 Tsi Act 150 Ps Elegance Dsg,2024,19000, Benzin, Tiptronic, DS Garantisi,2495000
+Volkswagen, Tiguan,1.5 Etsi Act 150 Ps Elegance Dsg,2024,8512, Benzin, Tiptronic, DS Garantisi,2490000
+Volkswagen, Tiguan,1.5 Etsi Act 150 Ps Elegance Dsg,2024,11168, Hibrit, Tiptronic, DS Garantisi,2460000
+Volkswagen, Passat Variant,1.5 Tsi Act 150 Ps Business Dsg,2024,9960, Benzin, Tiptronic, DS Garantisi,2395000
+Volkswagen, Tiguan,1.5 Etsi Act 150 Ps Life Dsg,2024,14738, Hibrit, Tiptronic, DS Garantisi,2135000
+Volkswagen, Tiguan,1.5 Etsi Act 150 Ps Life Dsg,2024,10796, Hibrit, Tiptronic, DS Garantisi,2135000
+Volkswagen, Tiguan,1.5 Tsi Act 150 Ps Life Dsg,2024,20000, Benzin, Tiptronic, DS Garantisi,2129500
+Volkswagen, Tiguan,1.5 Tsi Act 150 Ps Life Dsg,2024,14424, Benzin, Tiptronic, Garantisiz,2129500
+Volkswagen, T-cross,1.0 Tsi 115 Ps R-line Dsg,2024,6001, Benzin, Tiptronic, DS Garantisi,1650000
+Volkswagen, T-cross,1.0 Tsi 115 Ps R-line Dsg,2024,8679, Benzin, Tiptronic, DS Garantisi,1593000
+Volkswagen, Caddy,2.0 Tdi 122 Ps Style Dsg,2024,21200, Dizel, Tiptronic, DS Garantisi,1569000
+Volkswagen, Caddy,2.0 Tdi 122 Ps Style Dsg,2024,35917, Dizel, Tiptronic, DS Garantisi,1555500
+Volkswagen, Caddy,2.0 Tdi 122 Ps Style Dsg,2024,30650, Dizel, Tiptronic, DS Garantisi,1550000
+Volkswagen, Caddy,2.0 Tdi 122 Ps Style Dsg,2024,43352, Dizel, Tiptronic, DS Garantisi,1529500
+Volkswagen, Caddy,2.0 Tdi 122 Ps Style Dsg,2024,29783, Dizel, Tiptronic, DS Garantisi,1525000
+Volkswagen, Caddy,2.0 Tdi 122 Ps Style Dsg,2024,37220, Dizel, Tiptronic, DS Garantisi,1509900
+Volkswagen, Caddy,2.0 Tdi 122 Ps Style Dsg,2024,48790, Dizel, Tiptronic, DS Garantisi,1483000
+Volkswagen, T-cross,1.0 Tsi 115 Ps Life Dsg,2024,15834, Benzin, Tiptronic, DS Garantisi,1430000
+Volkswagen, Caddy,2.0 Tdi 122 Ps Life Dsg,2024,16360, Dizel, Tiptronic, DS Garantisi,1426500
+Volkswagen, Caddy,2.0 Tdi 122 Ps Life Dsg,2024,12600, Dizel, Tiptronic, Garantisiz,1379500
+Volkswagen, Caddy,2.0 Tdi 122 Ps Life Dsg,2024,25930, Dizel, Tiptronic, DS Garantisi,1375000
+Volkswagen, Taigo,1.0 Tsi 110ps Life Dsg,2024,6500, Benzin, Tiptronic, Garantisiz,1370000
+Volkswagen, Polo,1.0 Tsi 95 Ps Life Dsg,2024,12951, Benzin, Tiptronic, DS Garantisi,1325000
+Volkswagen, Caddy,2.0 Tdi 122 Ps Life Dsg,2024,56595, Dizel, Tiptronic, Garantisiz,1292500
+Volkswagen, Caddy,2.0 Tdi 122 Ps Life Dsg,2024,40300, Dizel, Tiptronic, DS Garantisi,1290000
+Volkswagen, Polo,1.0 Tsi 95 Ps Life Dsg,2024,15255, Benzin, Tiptronic, DS Garantisi,1265000
+Volkswagen, Polo,1.0 Tsi 95 Ps Life Dsg,2024,12500, Benzin, Tiptronic, DS Garantisi,1250000
+Volkswagen, Caddy,Cargo Maxi 2.0 Tdi 122 Ps Dsg,2024,9133, Dizel, Tiptronic, DS Garantisi,1200000
+Volkswagen, Polo,1.0 Tsi 95 Ps Life Dsg,2024,10961, Benzin, Tiptronic, DS Garantisi,1200000
+Volkswagen, Caddy,Cargo 2.0 Tdi 122 Ps Dsg,2024,7280, Dizel, Tiptronic, Garantisiz,1054000
+Toyota, Corolla,Hybrid Flame X-pack E-cvt,2024,26904, Hibrit, Otomatik, Garantisiz,1625000
+Toyota, Corolla,Hybrid Dream E-cvt,2024,29799, Hibrit, Otomatik, Garantisiz,1430000
+Skoda, Octavia,1.5 Tsi Act E-tec 150 Ps Dsg Prestige,2024,6100, Hibrit, Tiptronic, DS Garantisi,2119000
+Skoda, Karoq,1.5 Tsi 150 Ps Act Dsg Elite,2024,15545, Benzin, Tiptronic, DS Garantisi,1950000
+Skoda, Karoq,1.5 Tsi 150 Ps Act Dsg Elite,2024,15121, Benzin, Tiptronic, Garantisiz,1934900
+Skoda, Karoq,1.5 Tsi 150 Ps Act Dsg Elite,2024,10620, Benzin, Tiptronic, Garantisiz,1899950
+Skoda, Karoq,1.5 Tsi 150 Ps Act Dsg Elite,2024,15302, Benzin, Tiptronic, Garantisiz,1899900
+Skoda, Fabia,1.0 Tsi 110 Ps Dsg Premium,2024,6904, Benzin, Tiptronic, DS Garantisi,1240000
+Seat, Leon,1.0 Etsi 110 Hp Dsg Style,2024,9971, Hibrit, Tiptronic, DS Garantisi,1480000
+Seat, Leon,1.0 Etsi 110 Hp Dsg Style,2024,10881, Hibrit, Tiptronic, DS Garantisi,1480000
+Seat, Leon,1.0 Etsi 110 Hp Dsg Style,2024,17604, Hibrit, Tiptronic, DS Garantisi,1460000
+Seat, Leon,1.0 Etsi 110 Hp Dsg Style,2024,23529, Hibrit, Tiptronic, DS Garantisi,1428000
+Seat, Leon,1.0 Etsi 110 Hp Dsg Style,2024,31849, Hibrit, Tiptronic, DS Garantisi,1423000
+Seat, Leon,1.0 Etsi 110 Hp Dsg Style,2024,33111, Hibrit, Tiptronic, DS Garantisi,1398000
+Seat, Leon,1.0 Etsi 110 Hp Dsg Style,2024,16416, Hibrit, Tiptronic, DS Garantisi,1388000
+Seat, Arona,1.0 Eco Tsi 115 Hp Dsg Style,2024,6010, Benzin, Tiptronic, DS Garantisi,1335000
+Seat, Ibiza,1.0 Eco Tsi 110 Hp Dsg S&s Style,2024,6010, Benzin, Tiptronic, DS Garantisi,1210000
+Seat, Ibiza,1.0 Eco Tsi 115 Hp Dsg S&s Style,2024,7709, Benzin, Tiptronic, DS Garantisi,1170000
+Renault, Megane,Sedan Icon 1.3 Tce 140 Bg Edc,2024,28700, Benzin, Tiptronic, DS Garantisi,1435000
+Renault, Megane,Sedan Touch 1.3 Tce 140 Bg Edc,2024,27874, Benzin, Tiptronic, DS Garantisi,1365000
+Renault, Megane,Sedan Icon 1.3 Tce 140 Bg Edc,2024,35850, Benzin, Tiptronic, DS Garantisi,1325000
+Renault, Clio,Evolution 1.0 Tce X-tronic 90 Bg,2024,20692, Benzin, Otomatik, DS Garantisi,1048000
+Renault, Clio,Evolution 1.0 Tce X-tronic 90 Bg,2024,18508, Benzin, Otomatik, Garantisiz,1046000
+Renault, Clio,Evolution 1.0 Tce X-tronic 90 Bg,2024,22168, Benzin, Otomatik, DS Garantisi,1045000
+Renault, Clio,Evolution 1.0 Tce X-tronic 90 Bg,2024,20332, Benzin, Otomatik, DS Garantisi,1037000
+Renault, Clio,Evolution 1.0 Tce X-tronic 90 Bg,2024,22754, Benzin, Otomatik, DS Garantisi,1037000
+Renault, Clio,Evolution 1.0 Tce X-tronic 90 Bg,2024,15005, Benzin, Otomatik, DS Garantisi,1036500
+Renault, Clio,Evolution 1.0 Tce X-tronic 90 Bg,2024,19299, Benzin, Otomatik, DS Garantisi,1019900
+Renault, Clio,Evolution 1.0 Tce X-tronic 90 Bg,2024,17553, Benzin, Otomatik, DS Garantisi,1019900
+Renault, Clio,Evolution 1.0 Tce X-tronic 90 Bg,2024,10560, Benzin, Otomatik, DS Garantisi,979900
+Renault, Clio,Evolution 1.0 Tce X-tronic 90 Bg,2024,15720, Benzin, Otomatik, Garantisiz,964500
+Renault, Express,Combi Joy 1.5 Dci 95bg D-full,2024,29725, Dizel, Manuel, DS Garantisi,865000
+Renault, Express,Combi Joy 1.5 Dci 95bg D-full,2024,37454, Dizel, Manuel, DS Garantisi,865000
+Renault, Express,Combi Joy 1.5 Dci 95bg D-full,2024,32617, Dizel, Manuel, DS Garantisi,865000
+Renault, Express,Combi Joy 1.5 Dci 95bg D-full,2024,35740, Dizel, Manuel, DS Garantisi,865000
+Renault, Express,Combi Joy 1.5 Dci 95bg D-full,2024,30684, Dizel, Manuel, DS Garantisi,865000
+Renault, Express,Combi Joy 1.5 Dci 95bg D-full,2024,27050, Dizel, Manuel, DS Garantisi,855000
+Renault, Express,Combi Joy 1.5 Dci 95bg D-full,2024,33270, Dizel, Manuel, DS Garantisi,839500
+Porsche, 718,Cayman Style Edition,2024,70, Benzin, Otomatik, DS Garantisi,11050000
+Porsche, 718,Cayman Style Edition,2024,50, Benzin, Otomatik, DS Garantisi,10100000
+Porsche, Taycan,4s,2024,6073,Bilinmiyor, Otomatik, DS Garantisi,9400000
+Peugeot, 3008,Allure 1.5 Bluehdi 130hp Eat8,2024,14376, Dizel, Tiptronic, Garantisiz,1854250
+Peugeot, 3008,Allure 1.5 Bluehdi 130hp Eat8,2024,23185, Dizel, Tiptronic, DS Garantisi,1849500
+Peugeot, 3008,Allure 1.5 Bluehdi 130hp Eat8,2024,17742, Dizel, Tiptronic, DS Garantisi,1849500
+Peugeot, 3008,Allure 1.5 Bluehdi 130hp Eat8,2024,16283, Dizel, Tiptronic, Garantisiz,1849500
+Peugeot, 3008,Allure 1.5 Bluehdi 130hp Eat8,2024,18961, Dizel, Tiptronic, Garantisiz,1849250
+Peugeot, 3008,Allure 1.5 Bluehdi 130hp Eat8,2024,19906, Dizel, Tiptronic, Garantisiz,1849250
+Peugeot, 2008,Allure 1.2 Puretech 130hp Eat8,2024,16226, Benzin, Tiptronic, Garantisiz,1570000
+Peugeot, Expert Traveller,Allure L3 8+1 2.0 Bluehdi 180hp Eat8,2024,6101, Dizel, Tiptronic, DS Garantisi,1545500
+Peugeot, 2008,Allure 1.2 Puretech 130hp Eat8,2024,16100, Benzin, Tiptronic, DS Garantisi,1519900
+Peugeot, 2008,Allure 1.2 Puretech 130hp Eat8,2024,10886, Benzin, Tiptronic, DS Garantisi,1519900
+Peugeot, 2008,Allure 1.2 Puretech 130hp Eat8,2024,20346, Benzin, Tiptronic, DS Garantisi,1519900
+Peugeot, 2008,Allure 1.2 Puretech 130hp Eat8,2024,18691, Benzin, Tiptronic, DS Garantisi,1519900
+Peugeot, 2008,Allure 1.2 Puretech 130hp Eat8,2024,14313, Benzin, Tiptronic, Garantisiz,1519500
+Peugeot, 2008,Allure 1.2 Puretech 130hp Eat8,2024,16498, Benzin, Tiptronic, DS Garantisi,1519000
+Peugeot, 2008,Active Prime 1.2 Puretech 130hp Eat8,2024,12525, Benzin, Tiptronic, Garantisiz,1430000
+Peugeot, 2008,Active Prime 1.2 Puretech 130hp Eat8,2024,13439, Benzin, Tiptronic, Garantisiz,1430000
+Peugeot, 2008,Active Prime 1.2 Puretech 130hp Eat8,2024,15889, Benzin, Tiptronic, DS Garantisi,1419900
+Opel, Astra,Hb 1.2 130hp Benzin At8 Edition,2024,22620, Benzin, Tiptronic, Garantisiz,1360000
+Opel, Astra,Hb 1.2 130hp Benzin At8 Edition,2024,26512, Benzin, Tiptronic, Garantisiz,1360000
+Opel, Astra,Hb 1.2 130hp Benzin At8 Edition,2024,23175, Benzin, Tiptronic, Garantisiz,1350000
+Opel, Mokka,1.2 Turbo 130hp Edition,2024,19872, Benzin, Tiptronic, Garantisiz,1340000
+Opel, Mokka,1.2 Turbo 130hp Edition,2024,22598, Benzin, Tiptronic, Garantisiz,1335000
+Opel, Mokka,1.2 Turbo 130hp Edition,2024,14979, Benzin, Tiptronic, Garantisiz,1299750
+Opel, Mokka,1.2 Turbo 130hp Edition,2024,18082, Benzin, Tiptronic, Garantisiz,1295900
+Opel, Mokka,1.2 Turbo 130hp Edition,2024,18527, Benzin, Tiptronic, Garantisiz,1295750
+Opel, Mokka,1.2 Turbo 130hp Edition,2024,13374, Benzin, Tiptronic, Garantisiz,1289500
+Opel, Mokka,1.2 Turbo 130hp Edition,2024,21385, Benzin, Tiptronic, Garantisiz,1288900
+Opel, Mokka,1.2 Turbo 130hp Edition,2024,16896, Benzin, Tiptronic, Garantisiz,1277500
+Opel, Crossland,1.2 Benzinli At-6 130hp Essential,2024,16300, Benzin, Tiptronic, Garantisiz,1145000
+Opel, Crossland,1.2 Benzinli At-6 130hp Essential,2024,23081, Benzin, Tiptronic, Garantisiz,1140000
+Opel, Crossland,1.2 Benzinli At-6 130hp Essential,2024,14695, Benzin, Tiptronic, Garantisiz,1130000
+Opel, Crossland,1.2 Benzinli At-6 130hp Essential,2024,15303, Benzin, Tiptronic, DS Garantisi,1115000
+Opel, Crossland,1.2 Benzinli At-6 130hp Essential,2024,15673, Benzin, Tiptronic, DS Garantisi,1099900
+Opel, Crossland,1.2 Benzinli At-6 130hp Essential,2024,15602, Benzin, Tiptronic, DS Garantisi,1099900
+Opel, Crossland,1.2 Benzinli At-6 130hp Essential,2024,22654, Benzin, Tiptronic, Garantisiz,1079500
+Opel, Crossland,1.2 Benzinli At-6 130hp Essential,2024,20835, Benzin, Tiptronic, Garantisiz,1078000
+Opel, Corsa,1.2 Benzinli At8 100 Hp Edition,2024,18115, Benzin, Tiptronic, Garantisiz,1070000
+Opel, Crossland,1.2 Benzinli At-6 130hp Essential,2024,15353, Benzin, Tiptronic, Garantisiz,1069000
+Opel, Corsa,1.2 Benzinli At8 100 Hp Edition,2024,27563, Benzin, Tiptronic, Garantisiz,1050000
+Opel, Corsa,1.2 Benzinli At8 100 Hp Edition,2024,17001, Benzin, Tiptronic, DS Garantisi,1037500
+Mg, Hs,Luxury 1.5 T-gdi 162 Ps,2024,18065, Benzin, Tiptronic, DS Garantisi,1499900
+Mg, Hs,Luxury 1.5 T-gdi 162 Ps,2024,16845, Benzin, Tiptronic, DS Garantisi,1449750
+Mg, Hs,Luxury 1.5 T-gdi 162 Ps,2024,15238, Benzin, Tiptronic, DS Garantisi,1429900
